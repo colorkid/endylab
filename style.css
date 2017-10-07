@@ -1,4 +1,296 @@
 *{
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+}
+
+body{
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    font-size: 16px;
+    color: #000000;
+    overflow-x: hidden;
+}
+
+.order{
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	width: 100%;
+	max-width: 900px;
+	margin-top: 75px;
+}
+
+.order__row{
+	width: 100%;
+	border-top: 1px solid rgba(219, 219, 219, 1);
+}
+
+.order__row:last-child{
+	border-bottom: 1px solid rgba(219, 219, 219, 1);
+}
+
+.product {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+    height: 86px;
+}
+
+.product--deleted > div,
+.product--deleted > span{
+	opacity: 0.5;
+	z-index: -1;
+}
+
+.product__pic {
+    font-size: 0;
+}
+
+.product__title{
+	width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+	font-weight: 900;
+}
+
+.product__title a{
+	text-decoration: none;
+	color: #000000;
+}
+
+.product__parts{
+	width: 210px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product__calc {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+    max-width: 82px;
+}
+
+.count{
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	width: 25px;
+	height: 25px;
+	border: 1px solid #ff0000;
+	border-radius: 50%;
+	color: #ff0000;
+	position: relative;
+	cursor: pointer;
+}
+
+.count--dekrement:before{
+	content: "";
+	position: absolute;
+	top: 11px;
+	left: 6px;
+	width: 11px;
+	height: 1px;
+	background-color: #ff0000; 
+}
+
+.count--increment:before{
+	content: "";
+	position: absolute;
+	top: 11px;
+	left: 6px;
+	width: 11px;
+	height: 1px;
+	background-color: #ff0000; 
+}
+
+.count--increment:after{
+	content: "";
+	position: absolute;
+	top: 11px;
+	left: 6px;
+	width: 11px;
+	height: 1px;
+	background-color: #ff0000;
+	-webkit-transform: rotate(90deg);
+	        transform: rotate(90deg);
+}
+
+.count--disabled{
+	opacity: 0.5;
+}
+
+.product__action{
+	width: 82px;
+	height: 25px;
+	text-align: center;
+	border-radius: 10px;
+	border: 1px solid #bfbfbf;
+	font-size: 13px;
+	color: #a6a6a6;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.product__action--comeback{
+	border-color: #ff0000;
+	color: #ffffff;
+	background-color: #ff0000;
+}
+
+.progress {
+   	display: -webkit-box;
+   	display: -ms-flexbox;
+   	display: flex;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	width: 100%;
+	max-width: 900px;
+	margin-top: 90px;
+}
+
+.progress__row{
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	width: 100%;
+	max-width: 450px;
+	margin: 0 5px 40px 0;
+}
+
+.progress__tag {
+	display: none;
+}
+
+.progress__rigth{
+	position: relative;
+}
+
+.progress__wrapper{
+	border-radius: 10px;
+	overflow: hidden;
+	position: relative;
+}
+
+.progress__label{
+	width: 240px;
+	height: 25px;
+	border: 1px solid #bfbfbf;
+	border-radius: 10px;
+	background-color: #fff;
+}
+
+.progress__line{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 25px;
+	-webkit-transition: 1s;
+	transition: 1s;
+	background-color: #ff0000;
+}
+
+.progress__number{
+	position: absolute;
+	top: 30px;
+	left: -10px;
+	width: 100%;
+	font-size: 13px;
+	font-weight: 900;
+	-webkit-transition: 1s;
+	transition: 1s;
+}
+
+
+@media (max-width: 960px){
+	.product{
+		-webkit-box-pack: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
+		-ms-flex-wrap: wrap;
+		    flex-wrap: wrap;
+		height: auto;
+		padding: 15px;
+	}
+
+	.product div,
+	.product span{
+		width: 100%;
+		padding: 5px 0;
+		text-align: center;
+	}
+
+	.product__action{
+		margin-left: 15px;
+	}
+
+	.product__calc{
+		margin-right: 15px;
+	}
+
+	.progress{
+		-webkit-box-pack: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
+	}
+
+	.progress__row{
+		-webkit-box-pack: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
+		-ms-flex-wrap: wrap;
+		    flex-wrap: wrap;
+		padding: 0 15px;
+		text-align: center;
+	}
+
+	.progress__left{
+		width: 100%;
+		padding-bottom: 10px;
+	}
+
+	.progress__number{
+		text-align: left;
+	}
 }

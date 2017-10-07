@@ -2,12 +2,161 @@
 <html lang="ru">
 <head>
 	<meta charset="utf-8">
-	<title>EndyLab - тестовое задание</title>
+	<title>EndyLab - Тестовое задание</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:500,900" rel="stylesheet">
 </head>
   <body>
-  fff
+    <section class="order">
+      <article class="order__row">
+        <div class="product">
+          <div class="product__pic"><img src="pizza.png" alt="Пицца Пепперони на тонком тесте" class="product__img"></div>
+          <div class="product__title"><a href="#">Пицца Пепперони на тонком тесте</a></div>
+          <span class="product__parts">Пепперони, моцарелла, томаты, лук</span>
+          <div class="product__calc"><div class="count count--dekrement count--disabled"></div><div class="product__result" data-count="1"></div><div class="count count--increment"></div></div>
+          <button class="product__action">Удалить</button>
+        </div>
+      </article>
+      <article class="order__row">  
+        <div class="product">
+          <div class="product__pic"><img src="pizza.png" alt="Пицца Пепперони на тонком тесте" class="product__img"></div>
+          <div class="product__title"><a href="#">Пицца Пепперони на тонком тесте</a></div>
+          <span class="product__parts">Пепперони, моцарелла, томаты, лук</span>
+          <div class="product__calc"><div class="count count--dekrement count--disabled"></div><div class="product__result" data-count="1"></div><div class="count count--increment"></div></div>
+          <button class="product__action">Удалить</button>
+        </div>
+      </article>
+      <article class="order__row">  
+        <div class="product product--deleted">
+          <div class="product__pic"><img src="pizza.png" alt="Пицца Пепперони на тонком тесте" class="product__img"></div>
+          <div class="product__title"><a href="#">Пицца Пепперони на тонком тесте</a></div>
+          <span class="product__parts">Пепперони, моцарелла, томаты, лук</span>
+          <div class="product__calc"><div class="count count--dekrement count--disabled"></div><div class="product__result" data-count="1"></div><div class="count count--increment"></div></div>
+          <button class="product__action product__action--comeback">Вернуть</button>
+        </div>
+      </article>  
+    </section>
+
+    <section class="progress">
+      <div class="progress__row">
+        <div class="progress__left">№3208957205790</div>
+        <div class="progress__rigth">
+            <div class="progress__wrapper">
+              <div class="progress__label" data-progress="40"></div>
+              <div class="progress__line"></div>
+            </div>    
+            <div class="progress__number"></div>
+        </div>
+      </div>
+      <div class="progress__row">
+        <div class="progress__left">№3208957205790</div>
+        <div class="progress__rigth">
+            <div class="progress__wrapper">
+              <div class="progress__label" data-progress="100"></div>
+              <div class="progress__line"></div>
+            </div>    
+            <div class="progress__number"></div>
+        </div>
+      </div>  
+    </section>
+    <script type="text/javascript">
+    // Прогресс бар  
+    
+    var progressRow = document.querySelectorAll(".progress__row");
+    var progressLine = document.querySelectorAll(".progress__line");
+    var progressNumber = document.querySelectorAll(".progress__number");
+    
+    for(var i = 0; i < progressRow.length; i++){
+      var progressValue = progressRow[i].querySelector(".progress__label").getAttribute("data-progress");
+      progressLine[i].style.width = progressValue + "%";
+      progressNumber[i].innerHTML = progressValue + "%";
+
+      //Что-бы число из data-progress не выходило за рамки области прогресс бара
+      if(progressValue >= 90){
+        progressNumber[i].style.transform = "translateX(" + 90 + "%)";
+      }
+      else{
+        progressNumber[i].style.transform = "translateX(" + progressValue + "%)";
+      }
+    }
+    </script>
+
+
+    <script type="text/javascript">
+      //Добавление/удаление товара
+
+      var increments = document.querySelectorAll(".count--increment");
+      var dekrement = document.querySelectorAll(".count--dekrement");
+      var productResult = document.querySelectorAll(".product__result");
+      var productAction = document.querySelectorAll(".product__action");
+
+
+      // пишем в innerHTML значение количества из соответствующего data атрибута
+      for(var i = 0; i < productResult.length; i++){
+        productResult[i].innerHTML = productResult[i].getAttribute("data-count");
+      }
+  
+
+      //увеличиваем количество
+      for(var i = 0; i < increments.length; i++){
+        increments[i].previousElementSibling.setAttribute("data-index", i);
+
+        increments[i].addEventListener("click", function(){
+          var x = this.previousElementSibling.getAttribute("data-count");
+          x++;
+          this.previousElementSibling.setAttribute("data-count", x);
+          this.previousElementSibling.innerHTML = x;
+
+          var indexClick = this.previousElementSibling.getAttribute("data-index");
+          dekrement[indexClick].classList.remove("count--disabled");
+        });
+      }
+
+
+      //уменьшаем количество
+      for(var i = 0; i < dekrement.length; i++){
+        dekrement[i].nextElementSibling.setAttribute("data-index", i);
+
+        dekrement[i].addEventListener("click", function(){
+          var x = this.nextElementSibling.getAttribute("data-count");
+
+          if(x >= 2){
+            x--;
+            this.nextElementSibling.setAttribute("data-count", x);
+            this.nextElementSibling.innerHTML = x;
+
+            var indexClick = this.nextElementSibling.getAttribute("data-index");
+            if(x == 1){
+              this.classList.add("count--disabled");
+            }
+          }
+
+          else{
+            return false;
+          }
+
+        });
+      }
+
+
+      //кнопка вернуть/удалить
+      for(var i = 0; i < productAction.length; i++){
+        productAction[i].addEventListener("click", function(){
+          this.classList.toggle("product__action--comeback");
+
+          if(this.classList.contains("product__action--comeback")){
+            this.innerHTML = "Вернуть"
+            this.parentElement.classList.add("product--deleted");
+          }
+
+          else{
+            this.innerHTML = "Удалить"
+            this.parentElement.classList.remove("product--deleted");
+          }
+
+        });
+      }
+    </script>
   </body>
 </html> 
