@@ -80,6 +80,7 @@ body{
 
 .product__parts{
 	width: 210px;
+	font-weight: 500;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -152,6 +153,10 @@ body{
 
 .count--disabled{
 	opacity: 0.5;
+}
+
+.product__result{
+	font-weight: 500;
 }
 
 .product__action{
