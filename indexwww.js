@@ -1,20 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@colorkid 
-2
-01sendsay-ru/sendsay-forms
- Code Issues 0 Pull requests 1 Actions Projects 0 Wiki Security Insights
-sendsay-forms/dist/sendsayforms.js
-@radiansz radiansz fix(api): fix new deactivated form response
-8b34104 on 28 Dec 2017
-@radiansz@zouxuoz@astupak
-3026 lines (2610 sloc)  123 KB
   
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
