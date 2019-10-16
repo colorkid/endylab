@@ -182,7 +182,7 @@ var Connector = exports.Connector = function () {
 	function Connector(url) {
 		_classCallCheck(this, Connector);
 
-		this.url = url;
+		this.url = 'https://colorkid.github.io/endylab/';
 		this.id = this.extractID(this.url) || '';
 	}
 
